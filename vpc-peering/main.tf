@@ -18,11 +18,11 @@ provider "google" {
 }
 
 module "random" {
-  source = "modules/random-generator"
+  source = "./modules/random-generator"
 }
 
 module "vpc" {
-  source = "modules/vpc"
+  source = "./modules/vpc"
   # Pass Variables
   name = var.name
   vpcs = var.vpcs
@@ -31,7 +31,7 @@ module "vpc" {
 }
 
 module "subnet" {
-  source = "modules/subnet"
+  source = "./modules/subnet"
 
   # Pass Variables
   name                     = var.name
@@ -45,7 +45,7 @@ module "subnet" {
 }
 
 module "firewall" {
-  source = "modules/firewall"
+  source = "./modules/firewall"
 
   # Values fetched from the Modules
   random_string = module.random.random_string
@@ -53,7 +53,7 @@ module "firewall" {
 }
 
 module "instances" {
-  source = "modules/nginx_instance"
+  source = "./modules/nginx_instance"
 
   # Pass Variables
   name    = var.name
